@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>生日快乐！🎂</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      font-family: 'Microsoft YaHei', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* 烟花容器 */
+    #fireworks {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* 内容容器 */
+    .container {
+      position: relative;
+      z-index: 1;
+      padding: 20px;
+    }
+
+    /* 照片墙 - 心形布局 */
+    .heart-gallery {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      max-width: 800px;
+      margin: 50px auto;
+      position: relative;
+    }
+
+    .heart-gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 223, 0, 0.5);
+    }
+
+    .heart-gallery img:hover {
+      transform: scale(1.1) rotate(-5deg);
+      z-index: 2;
+    }
+
+    /* 视频展示 */
+    .video-wall {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      margin: 30px auto;
+    }
+
+    video {
+      width: 100%;
+      border-radius: 15px;
+      border: 2px solid gold;
+    }
+
+    /* 祝福语 */
+    .blessing {
+      text-align: center;
+      color: #fff;
+      margin: 50px 0;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff69b4;
+      }
+
+      to {
+        text-shadow: 0 0 20px #ff1493, 0 0 30px #ff69b4;
+      }
+    }
+
+    /* 音乐播放器 */
+    #musicPlayer {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: crosshair;
+    }
+
+    /* 艺术字体样式 */
+    .art-font {
+      text-align: center;
+      color: #ff69b4;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 36px;
+      text-shadow: 0 0 10px #ff69b4;
+      margin-bottom: 20px;
+    }
+
+    /* 新音乐播放器样式 */
+    .multi-music-player {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .multi-music-player button {
+      padding: 10px 20px;
+      margin: 0 5px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .multi-music-player button:hover {
+      background-color: #ff1493;
+    }
+
+    .current-song {
+      color: white;
+      margin-top: 10px;
+    }
+
+    /* 定义转动动画 */
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* 转动动画类 */
+    .rotate {
+      animation: rotate 2s linear infinite;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 烟花动画容器 -->
+  <canvas id="fireworks"></canvas>
+
+  <div class="container">
+    <!-- 标题 -->
+    <h1 class="blessing">🎉 祝 [庄子怡] 小朋友19岁生日快乐！ 🎉</h1>
+
+    <!-- 本人帅照标题 -->
+    <div class="art-font">✌✌✌本人帅照✌✌✌</div>
+
+    <!-- 心形照片墙 -->
+    <div class="heart-gallery">
+      <!-- 共需要19张照片代表19岁 -->
+      <img src="images/1.jpg" alt="记忆1">
+      <img src="images/2.jpg" alt="记忆1">
+      <img src="images/3.jpg" alt="记忆1">
+      <img src="images/4.jpg" alt="记忆1">
+      <img src="images/5.jpg" alt="记忆1">
+      <img src="images/6.jpg" alt="记忆1">
+      <img src="images/7.jpg" alt="记忆1">
+      <img src="images/8.jpg" alt="记忆1">
+      <img src="images/9.jpg" alt="记忆1">
+      <img src="images/10.jpg" alt="记忆1">
+      <img src="images/11.jpg" alt="记忆1">
+      <img src="images/12.jpg" alt="记忆1">
+      <img src="images/13.jpg" alt="记忆1">
+      <img src="images/14.jpg" alt="记忆1">
+      <img src="images/15.jpg" alt="记忆1">
+      <img src="images/16.jpg" alt="记忆1">
+      <img src="images/17.jpg" alt="记忆1">
+      <img src="images/18.jpg" alt="记忆1">
+      <img src="images/19.jpg" alt="记忆1">
+      <img src="images/20.jpg" alt="记忆1">
+      <img src="images/21.jpg" alt="记忆1">
+      <img src="images/22.jpg" alt="记忆1">
+      <img src="images/23.jpg" alt="记忆1">
+      <img src="images/24.jpg" alt="记忆1">
+      <img src="images/25.jpg" alt="记忆1">
+      <img src="images/26.jpg" alt="记忆1">
+      <!-- 添加更多照片... -->
+    </div>
+
+    <!-- 才艺展示标题 -->
+    <div class="art-font">!!!SHOW TIME!!!</div>
+
+    <!-- 视频展示区 -->
+    <div class="video-wall">
+      <video controls>
+        <source src="videos/v1.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="videos/v2.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="videos/v3.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="videos/v4.mp4" type="video/mp4">
+      </video>
+      <video controls>
+        <source src="videos/v5.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="art-font">~~~生活不易 公主卖艺~~~</div>
+
+    <!-- 新音乐播放器 -->
+    <div class="multi-music-player">
+      <button id="playMulti">播放</button>
+      <button id="pauseMulti">暂停</button>
+      <button id="prevMulti">上一曲</button>
+      <button id="nextMulti">下一曲</button>
+      <div class="current-song" id="currentSong"></div>
+    </div>
+
+    <!-- 祝福语 -->
+    <div class="blessing">
+      <p>亲爱的[庄子怡]：</p>
+      <p>今天是2025年2月23日</p>
+      <p>愿你的19岁如烟花般绚烂！</p>
+      <p>🎂 生日快乐！永远18+1岁！ 🎂</p>
+    </div>
+  </div>
+
+  <!-- 音乐播放器 -->
+  <div id="musicPlayer"><span id="musicIcon">🎵</span> 点击播放生日歌</div>
+
+  <script>
+    // 烟花动画（需要引入fireworks.js）
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 简单的烟花效果实现
+    class Firework {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = canvas.height;
+        this.speed = Math.random() * 5 + 3;
+        this.radius = Math.random() * 2 + 1;
+        this.color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      }
+      update() {
+        this.y -= this.speed;
+        if (this.y < Math.random() * canvas.height / 3) {
+          this.speed = -this.speed * 0.5;
+        }
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
+
+    const fireworks = [];
+    function animate() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (Math.random() < 0.1) {
+        fireworks.push(new Firework());
+      }
+
+      fireworks.forEach((firework, index) => {
+        firework.update();
+        if (firework.y > canvas.height) {
+          fireworks.splice(index, 1);
+        }
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // 背景音乐控制
+    const audio = new Audio('music/happyBirth.mp3');
+    let isMusicPlaying = false;
+    let isVideoPlaying = false;
+    let isMultiMusicPlaying = false;
+    const musicIcon = document.getElementById('musicIcon');
+
+    // 尝试自动播放音频
+    function tryPlayAudio() {
+      audio.play()
+        .then(() => {
+          console.log('音乐开始播放');
+          audio.loop = true;
+          isMusicPlaying = true;
+          musicIcon.classList.add('rotate'); // 添加转动动画类
+        })
+        .catch((error) => {
+          console.error('音乐播放失败:', error);
+          // 如果播放失败，等待用户交互后再尝试
+          document.addEventListener('click', () => {
+            audio.play()
+              .then(() => {
+                console.log('音乐开始播放');
+                audio.loop = true;
+                isMusicPlaying = true;
+                musicIcon.classList.add('rotate'); // 添加转动动画类
+              })
+              .catch((error) => {
+                console.error('音乐播放失败:', error);
+              });
+          }, { once: true });
+        });
+    }
+
+    // 页面加载完成后尝试播放音频
+    window.addEventListener('load', tryPlayAudio);
+
+    // 视频播放和结束事件监听
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      video.addEventListener('play', () => {
+        if (isMusicPlaying) {
+          audio.pause();
+          isMusicPlaying = false;
+          isVideoPlaying = true;
+          musicIcon.classList.remove('rotate'); // 移除转动动画类
+        }
+      });
+
+      video.addEventListener('pause', () => {
+        if (!isMusicPlaying && !Array.from(videos).some(v => v.paused === false) && !isMultiMusicPlaying) {
+          audio.play()
+            .then(() => {
+              console.log('音乐恢复播放');
+              audio.loop = true;
+              isMusicPlaying = true;
+              isVideoPlaying = false;
+              musicIcon.classList.add('rotate'); // 添加转动动画类
+            })
+            .catch((error) => {
+              console.error('音乐恢复播放失败:', error);
+            });
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        if (!isMusicPlaying && !Array.from(videos).some(v => v.paused === false) && !isMultiMusicPlaying) {
+          audio.play()
+            .then(() => {
+              console.log('音乐恢复播放');
+              audio.loop = true;
+              isMusicPlaying = true;
+              isVideoPlaying = false;
+              musicIcon.classList.add('rotate'); // 添加转动动画类
+            })
+            .catch((error) => {
+              console.error('音乐恢复播放失败:', error);
+            });
+        }
+      });
+    });
+
+    // 照片墙点击放大
+    document.querySelectorAll('.heart-gallery img').forEach(img => {
+      img.addEventListener('click', () => {
+        img.classList.toggle('zoom');
+      });
+    });
+
+    // 多音乐播放器功能
+    const musicList = [
+      'music/我怀念的.mp3'
+    ];
+    let currentIndex = 0;
+    const multiAudio = new Audio(musicList[currentIndex]);
+    const playMultiBtn = document.getElementById('playMulti');
+    const pauseMultiBtn = document.getElementById('pauseMulti');
+    const prevMultiBtn = document.getElementById('prevMulti');
+    const nextMultiBtn = document.getElementById('nextMulti');
+    const currentSongDiv = document.getElementById('currentSong');
+
+    function updateCurrentSong() {
+      const songName = musicList[currentIndex].split('/').pop();
+      currentSongDiv.textContent = `当前播放: ${songName}`;
+    }
+
+    playMultiBtn.addEventListener('click', () => {
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        musicIcon.classList.remove('rotate'); // 移除转动动画类
+      }
+      multiAudio.play();
+      isMultiMusicPlaying = true;
+    });
+
+    pauseMultiBtn.addEventListener('click', () => {
+      multiAudio.pause();
+      isMultiMusicPlaying = false;
+      if (!isVideoPlaying) {
+        audio.play()
+          .then(() => {
+            console.log('音乐恢复播放');
+            audio.loop = true;
+            isMusicPlaying = true;
+            musicIcon.classList.add('rotate'); // 添加转动动画类
+          })
+          .catch((error) => {
+            console.error('音乐恢复播放失败:', error);
+          });
+      }
+    });
+
+    prevMultiBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + musicList.length) % musicList.length;
+      multiAudio.src = musicList[currentIndex];
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        musicIcon.classList.remove('rotate'); // 移除转动动画类
+      }
+      multiAudio.play();
+      isMultiMusicPlaying = true;
+      updateCurrentSong();
+    });
+
+    nextMultiBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % musicList.length;
+      multiAudio.src = musicList[currentIndex];
+      if (isMusicPlaying) {
+        audio.pause();
+        isMusicPlaying = false;
+        musicIcon.classList.remove('rotate'); // 移除转动动画类
+      }
+      multiAudio.play();
+      isMultiMusicPlaying = true;
+      updateCurrentSong();
+    });
+
+    multiAudio.addEventListener('ended', () => {
+      isMultiMusicPlaying = false;
+      if (!isVideoPlaying) {
+        audio.play()
+          .then(() => {
+            console.log('音乐恢复播放');
+            audio.loop = true;
+            isMusicPlaying = true;
+            musicIcon.classList.add('rotate'); // 添加转动动画类
+          })
+          .catch((error) => {
+            console.error('音乐恢复播放失败:', error);
+          });
+      }
+    });
+
+    updateCurrentSong();
+  </script>
+</body>
+
+</html>
